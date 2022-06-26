@@ -1,0 +1,43 @@
+﻿@model IEnumerable<billingapp.tbl_order>
+
+@{
+    ViewBag.Title = "order_by_cust";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>order_by_cust</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                customer name
+            </th>
+            <th>
+                Action
+            </th>
+            
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.tbl_customer.cust_name)
+                </td>
+
+                <td>
+                    @Html.ActionLink("List", "listorderbycust", new { id = item.cust_id }) 
+                    
+                </td>
+            </tr>
+        }
+
+    </table>
+}
